@@ -16,12 +16,23 @@
                         <div class="dropdown-menu m-0">
                             <a href="detail.html" class="dropdown-item">Course Detail</a>
                             <a href="{{ route('front.team') }}" class="dropdown-item @yield('team-active')">Instructors</a>
-                            <a href="{{ route('front.testmonials') }}" class="dropdown-item @yield('testmonials-active')">Testimonial</a>
+                            <a href="{{ route('front.testmonials') }}"
+                                class="dropdown-item @yield('testmonials-active')">Testimonial</a>
                         </div>
                     </div>
                     <a href="{{ route('front.contact') }}" class="nav-item nav-link @yield('contact-active')">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
+                @guest
+
+                    <a href="{{ route('front.login') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+                    <a href="{{ route('front.register') }}" class="btn btn- py-2 px-4 d-none d-lg-block">Registre</a>
+                @endguest
+                @auth
+                    <form action="{{ route('front.logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-danger py-2 px-4 d-none d-lg-block">Logout</button>
+                    </form>
+                @endauth
             </div>
         </nav>
     </div>
