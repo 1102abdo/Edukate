@@ -28,12 +28,12 @@
                         <h2 class="form-title">Login</h2>
 
                         <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email"
+                            <input type="email" class="form-input" name="email" value="{{ old('email') }}"
                                 placeholder="Your Email" />
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password"
+                            <input type="text" class="form-input" name="password" value="{{ old('password') }}"
                                 placeholder="Password" />
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />

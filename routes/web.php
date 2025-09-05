@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
@@ -27,9 +28,13 @@ Route::name('front.')->controller(FrontController::class)->group(function () {
 
     require __DIR__ . '/auth.php';
 });
-// =========================testmonials page==========
-// Route::view('login', 'front.auth.login');
-// Route::view('register', 'front.auth.register');
+Route::name('admin.')->prefix('admin')->controller(AdminController::class)->group(function () {
+   
+    Route::get('/', 'index')->name('dashboard');
+
+    require __DIR__ . '/auth.php';
+});
+
 
 
 // Route::get('/dashboard', function () {
